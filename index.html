@@ -394,26 +394,57 @@
             word-break: break-word; /* Rompe palabras largas si es necesario */
             line-height: 1.2;
         }
+
+        /* Base styles for the navigation links container */
+        #nav-links {
+            transition: all 0.3s ease-in-out; /* Transición suave para abrir/cerrar */
+        }
+
         @media (max-width: 768px) { /* Estilos para pantallas pequeñas (móviles) */
-            nav .container { flex-direction: column; align-items: flex-start; } /* Apila los elementos de navegación */
+            nav .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
             nav .container a span { font-size: 1.5rem; } /* Ajusta el tamaño de la fuente del logo */
-            /* INICIO DE CORRECCIÓN PARA NAVEGACIÓN MÓVIL */
-            /* El div que contiene los enlaces de navegación y el botón del carrito */
-            nav .container > div:last-child {
-                flex-direction: column; /* Apila los elementos verticalmente */
-                width: 100%; /* Ocupa todo el ancho disponible */
-                align-items: stretch; /* Estira los elementos hijos para que ocupen todo el ancho */
-                margin-top: 1rem; /* Espacio superior para separar del logo */
-                gap: 0.75rem; /* Espacio entre los elementos apilados */
+
+            /* Botón de menú hamburguesa visible solo en móvil */
+            #menu-toggle {
+                display: block; /* Mostrar botón de hamburguesa */
+                order: 2; /* Posicionarlo después del logo pero antes de los enlaces de navegación */
+                margin-left: auto; /* Empujar a la derecha */
             }
-            /* Los enlaces individuales y el botón del carrito dentro del div de navegación */
-            nav .container > div:last-child > a,
-            nav .container > div:last-child > button {
-                margin-left: 0 !important; /* Elimina los márgenes horizontales de Tailwind que causan desbordamiento */
-                width: 100%; /* Asegura que cada elemento ocupe el ancho completo */
-                text-align: center; /* Centra el texto de los enlaces y el botón */
+
+            /* Enlaces de navegación ocultos por defecto en móvil */
+            #nav-links {
+                display: none; /* Ocultar por defecto */
+                flex-direction: column; /* Apilar verticalmente */
+                width: 100%; /* Ocupar todo el ancho */
+                align-items: stretch; /* Estirar los elementos para que llenen el ancho */
+                margin-top: 1rem; /* Espacio desde el logo/botón de alternar */
+                gap: 0.75rem; /* Espacio entre enlaces */
+                padding-bottom: 1rem; /* Añadir algo de relleno en la parte inferior */
             }
-            /* FIN DE CORRECCIÓN PARA NAVEGACIÓN MÓVIL */
+
+            /* Cuando está activo, mostrar los enlaces de navegación */
+            #nav-links.active {
+                display: flex; /* Mostrar cuando está activo */
+            }
+
+            /* Enlaces individuales y botón del carrito dentro del menú móvil */
+            #nav-links > a,
+            #nav-links > button {
+                margin-left: 0 !important; /* Anular los márgenes horizontales de Tailwind que causan desbordamiento */
+                width: 100%; /* Asegurar el ancho completo */
+                text-align: center; /* Centrar el texto */
+                padding: 0.75rem 1rem; /* Ajustar el relleno para mejores objetivos táctiles */
+                border-radius: 0.5rem; /* Esquinas ligeramente redondeadas */
+                background-color: rgba(255,255,255,0.1); /* Fondo ligero para legibilidad */
+                transition: background-color 0.2s ease;
+            }
+            #nav-links > a:hover,
+            #nav-links > button:hover {
+                background-color: rgba(255,255,255,0.2);
+            }
 
             .hero-bg { height: 75vh; } /* Reduce la altura del hero en móviles */
             .hero-bg h1 { font-size: 2.5rem; line-height: 1.2; }
@@ -497,7 +528,10 @@
                 <img src="https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_13_11%20p.m..png?raw=true" alt="Logo FUMAYA" class="h-14 w-auto mr-3 rounded-full border-2 border-white shadow-lg transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://placehold.co/60x60/FBBF24/FFFFFF?text=Logo';this.onerror=null;">
                 <span class="font-display text-2xl md:text-3xl font-bold text-brand-900 leading-tight group-hover:text-brand-800 transition-colors duration-300">Escuela Autoctona Fumaya</span>
             </a>
-            <div class="space-x-2 sm:space-x-4 md:space-x-6 mt-3 md:mt-0 flex items-center">
+            <button id="menu-toggle" class="md:hidden text-brand-900 text-3xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div id="nav-links" class="hidden md:flex flex-col md:flex-row space-x-2 sm:space-x-4 md:space-x-6 mt-3 md:mt-0 items-center w-full md:w-auto">
                 <a href="#home" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Inicio</a>
                 <a href="#sobre-nosotros" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Sobre Nosotros</a>
                 <a href="#fungicabs" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Fungicabs</a>
@@ -1292,6 +1326,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // New: Lógica para el menú hamburguesa
+    const menuToggleEl = document.getElementById('menu-toggle');
+    const navLinksEl = document.getElementById('nav-links');
+
+    if (menuToggleEl && navLinksEl) {
+        menuToggleEl.addEventListener('click', () => {
+            navLinksEl.classList.toggle('active'); // Alternar la clase 'active'
+            // Cambiar el icono según el estado
+            const icon = menuToggleEl.querySelector('i');
+            if (navLinksEl.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // Icono 'X' cuando está abierto
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars'); // Icono de hamburguesa cuando está cerrado
+            }
+        });
+
+        // Cerrar el menú cuando se hace clic en un enlace (para un desplazamiento suave)
+        navLinksEl.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksEl.classList.remove('active');
+                menuToggleEl.querySelector('i').classList.remove('fa-times');
+                menuToggleEl.querySelector('i').classList.add('fa-bars');
+            });
+        });
+    }
 });
 </script>
 </body>
