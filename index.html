@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fungicabs y literatura chamánica para la expansión de la conciencia. Compra fungicabs y libros espirituales en la Escuela Autóctona Fumaya.">
+    <title>Escuela Autoctona Fumaya · Fungicabs & Libros</title>
+
+    <script>
+    tailwind = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'], /* Fuente para títulos y elementos destacados */
+            sans: ['Inter', 'sans-serif'] /* Fuente principal para el cuerpo del texto */
+          },
+          colors: {
+            // Paleta de colores de la marca "FUMAYA"
+            brand: {
+              50:  '#FFF8E1',
+              100: '#FFECB3',
+              200: '#FFE082',
+              300: '#FFD54F',
+              400: '#FFCA28',
+              500: '#FFC107', // Color principal de la marca (Naranja/Ámbar)
+              600: '#FFB300',
+              700: '#FFA000',
+              800: '#FF8F00',
+              900: '#FF6F00'
+            },
+            // Colores para texto y elementos oscuros, inspirados en el cacao
+            cacao: {
+              700:'#4A3B31',
+              800:'#3B2C24', /* Marrón oscuro principal para texto */
+              900:'#2E221A'
+            },
+            // Colores adicionales para el diseño de la interfaz de usuario
+            'yellow-energetic': '#FFCF56', /* Amarillo vibrante, usado en la barra de navegación y pie de página */
+            'brown-dark': '#4A3B31', /* Marrón oscuro para texto principal (redundante con cacao-700) */
+            'brown-medium': '#795548', /* Marrón medio para texto secundario */
+            'orange-700': '#FF8F00', /* Naranja para precios y enlaces destacados */
+            'orange-50': '#FFF8E1', /* Fondo suave para secciones (redundante con brand-50) */
+            'amber-50': '#FFFBEB', /* Fondo más claro para secciones */
+            'amber-100': '#FEF3C7', /* Fondo para la sección de contacto */
+          }
+        }
+      }
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+        /* === Estilos base del cuerpo ============================================== */
+        body {
+            font-family: 'Inter', sans-serif; /* Aplica la fuente Inter */
+            background-color: #FFF8E1; /* Fondo crema suave */
+            color: #4A3B31; /* Marrón oscuro para texto principal */
+            line-height: 1.6; /* Espaciado de línea para legibilidad */
+            scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces de ancla */
+            -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para navegadores WebKit */
+            -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
+        }
+        /* Estilo específico para la fuente de títulos */
+        .font-display {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.025em; /* Ajuste ligero para un look más premium */
+        }
+
+        /* === Barra de navegación "glassy" ========================================= */
+        .nav-glass {
+            background: rgba(255,236,179,0.8); /* Fondo semitransparente con color de marca */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque (glassmorphism) */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave */
+            position: sticky; /* Se mantiene en la parte superior al hacer scroll */
+            top: 0;
+            z-index: 50; /* Asegura que esté por encima de otros elementos */
+        }
+
+        /* === Sección Hero (Banner principal) ====================================== */
+        .hero-bg {
+            background-image: url('https://github.com/YanYuary/FUNGICABS/blob/main/El%20Hechicero%20de%20la%20Luz%20C%C3%A1lida.png?raw=true'); /* Imagen de fondo */
+            background-size: contain; /* Ajusta la imagen para que quepa dentro del contenedor */
+            background-position: center center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Efecto parallax al hacer scroll */
+            background-color: #261C15; /* Color de fondo si la imagen no cubre todo */
+            height: 90vh; /* Altura generosa para la sección */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white; /* Color de texto blanco para contraste */
+            overflow: hidden; /* Asegura que la imagen no se desborde */
+        }
+        /* Superposición para oscurecer la imagen de fondo y mejorar la legibilidad del texto */
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0; /* Cubre todo el área del contenedor */
+            background: linear-gradient(to top, rgba(43,25,19,0.9) 0%, rgba(43,25,19,0.4) 60%, transparent 100%);
+            z-index: 1; /* Coloca la superposición debajo del contenido del hero */
+        }
+        /* Contenido del hero, sobre la superposición */
+        .hero-content {
+            z-index: 2; /* Coloca el contenido del hero por encima de la superposición */
+            position: relative;
+            padding: 1.5rem;
+            max-width: 90%; /* Ancho máximo para el contenido */
+        }
+
+        /* === Estilos generales de Botones ========================================= */
+        .btn {
+            display: inline-flex; /* Permite alinear icono y texto */
+            align-items: center; /* Centra verticalmente los elementos */
+            justify-content: center; /* Centra horizontalmente los elementos */
+            gap: .5rem; /* Espacio entre el icono y el texto */
+            padding: .9rem 2rem; /* Más padding para botones más grandes */
+            border-radius: .75rem; /* Bordes redondeados (equivalente a Tailwind rounded-lg) */
+            font-weight: 600; /* Texto seminegrita */
+            letter-spacing: .75px; /* Más espaciado entre letras */
+            text-transform: uppercase; /* Texto en mayúsculas */
+            transition: all .3s ease; /* Transición suave para efectos hover */
+            box-shadow: 0 6px 15px rgba(0,0,0,.15); /* Sombra pronunciada */
+            font-size: 1.05rem; /* Tamaño de fuente ligeramente mayor */
+        }
+        /* Estilos para el botón primario */
+        .btn-primary {
+            background: #FFC107; /* Naranja principal de la marca */
+            color: #fff; /* Texto blanco */
+            padding: .9rem 2rem; /* Más padding para botones más grandes */
+            border-radius: .75rem; /* Bordes redondeados (equivalente a Tailwind rounded-lg) */
+        }
+        .btn-primary:hover {
+            background: #FFA000; /* Naranja más oscuro al pasar el ratón */
+            transform: translateY(-3px); /* Efecto de elevación */
+            box-shadow: 0 8px 20px rgba(0,0,0,.25); /* Sombra más grande al pasar el ratón */
+            padding: .9rem 2rem; /* Más padding para botones más grandes */
+            border-radius: .75rem; /* Bordes redondeados (equivalente a Tailwind rounded-lg) */
+        }
+        /* Estilos para el botón secundario */
+        .btn-secondary {
+            background: #FFE082; /* Amarillo claro de la marca */
+            color: #4A3B31; /* Texto marrón oscuro */
+            padding: .9rem 2rem; /* Más padding para botones más grandes */
+            border-radius: .75rem; /* Bordes redondeados (equivalente a Tailwind rounded-lg) */
+        }
+        .btn-secondary:hover {
+            background: #FFD54F; /* Amarillo más oscuro al pasar el ratón */
+            transform: translateY(-3px); /* Efecto de elevación */
+            box-shadow: 0 8px 20px rgba(0,0,0,.18); /* Sombra más grande al pasar el ratón */
+            padding: .9rem 2rem; /* Más padding para botones más grandes */
+            border-radius: .75rem; /* Bordes redondeados (equivalente a Tailwind rounded-lg) */
+
+        }
+
+        /* === Tarjetas de producto ================================================= */
+        .card {
+            background: #fff;
+            border-radius: 1rem; /* Bordes más redondeados */
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,.05); /* Sombra suave */
+            display: flex;
+            flex-direction: column; /* Contenido apilado verticalmente */
+            transition: all .3s ease; /* Transición suave para efectos hover */
+            border: 1px solid #FFECB3; /* Borde suave */
+            cursor: pointer; /* Indica que la tarjeta es clickeable */
+        }
+        .card:hover {
+            transform: translateY(-6px); /* Elevación más pronunciada al pasar el ratón */
+            box-shadow: 0 14px 28px rgba(0,0,0,.15); /* Sombra más grande al pasar el ratón */
+        }
+        .product-image-container {
+            background-color: #FFFFFF;
+            padding: 12px;
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.08); /* Sombra interna para efecto de profundidad */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+            border-radius: 8px;
+        }
+
+        /* === Modales (Ventanas emergentes) ======================================== */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Fijo en la ventana de visualización */
+            inset: 0; /* Cubre toda la pantalla */
+            z-index: 1000; /* Z-index alto para estar sobre todo */
+            background: rgba(0,0,0,.7); /* Fondo oscuro semitransparente */
+            backdrop-filter: blur(8px); /* Efecto de desenfoque detrás del modal */
+            -webkit-backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease-out; /* Animación de aparición */
+        }
+        .modal-content {
+            background: rgba(255,248,225,0.9); /* Fondo crema claro semitransparente */
+            backdrop-filter: blur(8px);
+            border-radius: 1.25rem; /* Bordes más redondeados */
+            margin: 2% auto; /* Margen para centrar el modal */
+            padding: 2.5rem; /* Más padding interno */
+            max-width: 800px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.2);
+            color: #4A3B31;
+            animation: slideInTop 0.4s ease-out; /* Animación de entrada desde arriba */
+            position: relative;
+        }
+        .close-button {
+            font-size: 2.5rem; /* Tamaño grande para el botón de cerrar */
+            font-weight: bold;
+            color: #795548;
+            cursor: pointer;
+            position: absolute; /* Posicionamiento absoluto dentro del modal */
+            top: 1rem;
+            right: 1.5rem;
+            transition: color .3s ease;
+        }
+        .close-button:hover {
+            color: #4A3B31;
+        }
+
+        /* === Notificaciones (Mensajes de éxito/error) ============================= */
+        #notification, #error-notification {
+            position: fixed; /* Fijo en la pantalla */
+            top: 25px;
+            right: 25px;
+            color: white;
+            padding: 18px 28px;
+            border-radius: 10px;
+            z-index: 1050; /* Por encima de los modales */
+            display: none; /* Oculto por defecto */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            font-size: 1.05rem;
+            animation: slideInRight 0.4s ease-out; /* Animación de entrada desde la derecha */
+        }
+        #notification { background-color: #4CAF50; } /* Verde para notificaciones de éxito */
+        #error-notification { background-color: #F44336; } /* Rojo para notificaciones de error */
+
+        /* === Carrusel de imágenes ================================================= */
+        .carousel-container {
+            overflow: hidden; /* Oculta el contenido que se desborda */
+            position: relative;
+            border-radius: .75rem;
+            box-shadow: 0 6px 12px rgba(0,0,0,.15);
+            background-color: #fff;
+            margin-top: 3rem;
+        }
+        .carousel-track {
+            display: flex; /* Permite que las diapositivas estén en línea */
+            transition: transform .5s cubic-bezier(.68,-.55,.27,1.55); /* Curva de transición elástica para el movimiento */
+        }
+        .carousel-slide {
+            min-width: 100%; /* Cada diapositiva ocupa el 100% del ancho del contenedor */
+            box-sizing: border-box; /* Incluye padding y borde en el ancho */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 400px; /* Altura fija para las imágenes del carrusel */
+            object-fit: contain; /* Ajusta la imagen sin recortarse */
+            background: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .carousel-caption {
+            background: #FFF8E1;
+            color: #4A3B31;
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 1rem;
+            width: 100%;
+            border-top: 1px solid #FFCF56;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-left-radius: .75rem;
+            border-bottom-right-radius: .75rem;
+            margin-top: -1rem; /* Superponer ligeramente con la imagen */
+            position: relative;
+            z-index: 1;
+        }
+        .carousel-button {
+            position: absolute;
+            top: calc(400px / 2); /* Centrado verticalmente en la imagen */
+            transform: translateY(-50%);
+            background: rgba(255,193,7,.8); /* Fondo semitransparente con color de marca */
+            color: #fff;
+            border: none;
+            padding: .9rem;
+            cursor: pointer;
+            border-radius: 50%; /* Botones circulares */
+            z-index: 10;
+            transition: background .3s, transform .2s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            font-size: 1.5rem; /* Tamaño de icono más grande */
+        }
+        .carousel-button:hover {
+            background: rgba(255,160,0,1);
+            transform: translateY(-50%) scale(1.05); /* Efecto de escala al pasar el ratón */
+        }
+        .prev { left: 1.25rem; } /* Posición del botón "anterior" */
+        .next { right: 1.25rem; } /* Posición del botón "siguiente" */
+
+        /* === Carrito de compras =================================================== */
+        #cart-items-container .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #F5EACC; /* Separador entre elementos */
+            gap: 15px;
+        }
+        #cart-items-container .cart-item:last-child { border-bottom: none; } /* Elimina el borde del último elemento */
+        #cart-items-container .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #fff;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        #cart-items-container .cart-item-details { flex-grow: 1; } /* Ocupa el espacio restante */
+        #cart-items-container .cart-item-name { font-weight: 600; display: block; color: #3E2723; font-size: 1.1em; }
+        #cart-items-container .cart-item-price { font-size: 1em; color: #6D4C41; margin-top: 4px; }
+        #cart-items-container .cart-item-quantity input {
+            width: 70px;
+            text-align: center;
+            border: 1px solid #D7CCC8;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 1em;
+            background-color: #fff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        #cart-items-container .cart-item-quantity input:focus {
+            border-color: #FF9800;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+            outline: none;
+        }
+        #cart-items-container .cart-item-subtotal { font-weight: 700; min-width: 100px; text-align: right; color: #3E2723; font-size: 1.1em; }
+        #cart-items-container .remove-item-btn {
+            background: none;
+            border: none;
+            color: #D32F2F; /* Color rojo para eliminar */
+            font-size: 1.4em;
+            cursor: pointer;
+            padding: 8px;
+            transition: color 0.3s, transform 0.2s ease;
+            border-radius: 50%;
+        }
+        #cart-items-container .remove-item-btn:hover {
+            color: #B71C1C;
+            transform: scale(1.1);
+        }
+
+        /* === Placeholder de botón PayPal ========================================== */
+        .paypal-button-placeholder {
+            background-color: #0070ba; /* Color azul de PayPal */
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: not-allowed; /* Indica que no es interactivo aún */
+            opacity: 0.7; /* Ligeramente transparente */
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+        }
+        .paypal-button-placeholder:hover {
+            opacity: 0.8;
+        }
+
+        /* === Navegación responsiva =============================================== */
+        nav .container a span {
+            white-space: normal; /* Permite que el texto se ajuste */
+            word-break: break-word; /* Rompe palabras largas si es necesario */
+            line-height: 1.2;
+        }
+        @media (max-width: 768px) { /* Estilos para pantallas pequeñas (móviles) */
+            nav .container { flex-direction: column; align-items: flex-start; } /* Apila los elementos de navegación */
+            nav .container a span { font-size: 1.5rem; } /* Ajusta el tamaño de la fuente del logo */
+            nav .space-x-1 {
+                margin-top: 0.75rem;
+                display: flex;
+                flex-wrap: wrap; /* Permite que los enlaces se envuelvan */
+                gap: 0.75rem; /* Espacio entre los enlaces */
+            }
+            .hero-bg { height: 75vh; } /* Reduce la altura del hero en móviles */
+            .hero-bg h1 { font-size: 2.5rem; line-height: 1.2; }
+            .hero-bg p { font-size: 1rem; }
+            .carousel-slide img { height: 280px; max-height: 280px; } /* Ajusta altura de imágenes del carrusel */
+            .carousel-button { padding: 10px; font-size: 1.2rem; } /* Ajusta tamaño de botones del carrusel */
+            .modal-content { margin: 5% auto; padding: 25px; } /* Ajusta margen y padding del modal */
+            #notification, #error-notification {
+                width: calc(100% - 40px); /* Ancho completo con padding */
+                left: 20px;
+                right: 20px;
+                top: 15px;
+                font-size: 0.95rem;
+            }
+        }
+        /* Alineación de texto en la sección "Sobre Nosotros" */
+        #sobre-nosotros p { text-align: justify; hyphens: auto; } /* Justifica el texto y permite guiones */
+        /* Contenedor principal para centrar el contenido y añadir sombra */
+        .main-container { max-width: 1300px; margin-left: auto; margin-right: auto; background-color: #FFF8E1; box-shadow: 0 0 30px rgba(0,0,0,0.05); }
+        /* Estilos de pie de página para enlaces */
+        footer .container a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: rgba(255,255,255,0.15); /* Fondo semitransparente */
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+        }
+        footer .container a:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* === Animaciones CSS ===================================================== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInTop {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* === Estilos para campos de entrada de formulario ========================= */
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            background-color: #ffffff;
+            border: 1px solid #FFE0B2;
+            padding: 0.75rem 1rem;
+            border-radius: 0.6rem;
+            font-size: 1rem;
+            color: #4A3B31;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+            outline: none;
+            border-color: #FF9800;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+        }
+
+        /* === Estilos para modo oscuro (Dark Mode) ================================= */
+        @media (prefers-color-scheme:dark){
+          body{background:#2E221A;color:#FFF8E1;}
+          .nav-glass{background:rgba(43,25,19,.85);}
+          .card{background:#3B2C24;border-color:#4A3B31;color:#FFF8E1;}
+          .modal-content{background:rgba(59,44,36,.9);}
+        }
+    </style>
+</head>
+<body class="text-cacao-800">
+<div class="main-container">
+    <nav class="nav-glass shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex flex-wrap justify-between items-center">
+            <a href="#home" class="flex items-center group">
+                <img src="https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_13_11%20p.m..png?raw=true" alt="Logo FUMAYA" class="h-14 w-auto mr-3 rounded-full border-2 border-white shadow-lg transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://placehold.co/60x60/FBBF24/FFFFFF?text=Logo';this.onerror=null;">
+                <span class="font-display text-2xl md:text-3xl font-bold text-brand-900 leading-tight group-hover:text-brand-800 transition-colors duration-300">Escuela Autoctona Fumaya</span>
+            </a>
+            <div class="space-x-2 sm:space-x-4 md:space-x-6 mt-3 md:mt-0 flex items-center">
+                <a href="#home" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Inicio</a>
+                <a href="#sobre-nosotros" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Sobre Nosotros</a>
+                <a href="#fungicabs" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Fungicabs</a>
+                <a href="#libros" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Libros</a>
+                <a href="#contacto" class="text-brand-900 hover:text-brand-800 px-3 py-2 rounded-lg text-base sm:text-lg font-medium transition-colors duration-200">Contacto</a>
+                <button id="cart-button" class="btn-primary text-sm sm:text-base rounded-full py-2 px-4">
+                    <i class="fas fa-shopping-cart text-lg"></i> Carrito (<span id="cart-count">0</span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-bg flex items-center justify-center text-white">
+        <div class="hero-content">
+            <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 text-shadow-lg leading-tight" data-aos="fade-down">Bienvenido a Escuela Autoctona Fumaya</h1>
+            <p class="text-lg md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed opacity-90" data-aos="fade-up" data-aos-delay="150">Un portal dedicado a la expansión de la conciencia y el bienestar integral. Descubre obras literarias y Fungicabs para tu camino evolutivo.</p>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 justify-center mt-8" data-aos="zoom-in" data-aos-delay="300">
+                <a href="#sobre-nosotros" class="btn-secondary text-lg">
+                    <i class="fas fa-info-circle mr-2"></i> Sobre Nosotros
+                </a>
+                <a href="#fungicabs" class="btn-primary text-lg">
+                    <i class="fas fa-leaf mr-2"></i> Explorar Productos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-nosotros" class="py-24 bg-orange-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <img src="https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_13_11%20p.m..png?raw=true" alt="Logo FUMAYA en Sobre Nosotros" class="h-40 w-auto mx-auto mb-8 rounded-full shadow-xl border-4 border-white transform hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/160x160/FBBF24/FFFFFF?text=Logo'; this.onerror=null;">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-center text-brand-800 leading-tight">Sobre Nosotros: El Camino del Indio Rajadesh</h2>
+            </div>
+            <div class="max-w-4xl mx-auto text-lg text-brown-dark space-y-7 mb-20 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                <p>El sendero del Indio Rajadesh es un viaje épico a través de la multidimensionalidad, una odisea de autodescubrimiento y sanación profunda. Nacido con una conexión innata a las energías sutiles, Rajadesh se sumergió desde joven en las enseñanzas ancestrales del chamanismo neotolteca. Sus exploraciones lo llevaron más allá de los velos de la realidad ordinaria, enfrentando la 'Matrix alien' y desmantelando los 'metaprogramas ego' que limitan el potencial humano.</p>
+                <p>En sus travesías por los planos sutiles y las realidades paralelas, el Indio Rajadesh experimentó de primera mano la interconexión de toda la existencia. Fue en estos estados de conciencia expandida, guiado por la sabiduría del Abuelo Fuego y las revelaciones del Tarot, donde comprendió la naturaleza vibracional de la sanación. Descubrió cómo ciertas esencias y energías de la Madre Tierra, en particular las emanaciones sutiles de los hongos sagrados y plantas maestras, podían actuar como catalizadores para la armonización de los cuerpos energéticos y la disolución de bloqueos ancestrales.</p>
+                <p>Los Fungicabs nacieron de esta profunda inmersión. No son meros suplementos, sino elixires energéticos, concebidos en la confluencia de la sabiduría chamánica ancestral y la percepción directa de las realidades sutiles. Cada fórmula es una llave, una invitación a realinear el ser, expandir la percepción y reconectar con la fuente primordial de poder interior. La misión de la Escuela Autoctona Fumaya es compartir estas herramientas y conocimientos, iluminando el camino para aquellos valientes que se atreven a emprender su propia transformación y a reclamar su herencia como seres de poder y conciencia ilimitada.</p>
+            </div>
+
+            <div class="carousel-container max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+                <div class="carousel-track">
+                    </div>
+                <button class="carousel-button prev text-2xl" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-button next text-2xl" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="fungicabs" class="py-24 bg-amber-50">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-16 text-brand-800" data-aos="fade-up">Nuestros Fungicabs</h2>
+            <div id="fungicabs-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+                </div>
+        </div>
+    </section>
+
+    <section id="libros" class="py-24 bg-yellow-50">
+        <div class="container mx-auto px-6">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-16 text-brand-800" data-aos="fade-up">Libros para el Alma</h2>
+            <div id="books-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+                </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 bg-amber-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-12 text-brand-800" data-aos="fade-up">Contacto y Proceso de Pedido</h2>
+            <p class="text-lg mb-10 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">Para realizar tu pedido, por favor sigue estos pasos después de seleccionar tus productos en el carrito:</p>
+            <div class="max-w-xl mx-auto bg-white p-10 rounded-xl shadow-2xl border border-amber-200" data-aos="fade-up" data-aos-delay="200">
+                <ol class="list-decimal list-inside text-left space-y-4 text-brown-medium text-lg">
+                    <li>Revisa tu carrito y completa tus datos (nombre, email, WhatsApp opcional y ciudad).</li>
+                    <li>Haz clic en "Realizar Pedido" para que guardemos tu selección.</li>
+                    <li>Recibirás un mensaje en pantalla confirmando que hemos recibido tu pedido.</li>
+                    <li>Nosotros te contactaremos a tu correo electrónico o WhatsApp proporcionado para coordinar el pago vía PayPal y los detalles del envío.</li>
+                </ol>
+            </div>
+            <p class="text-xl mt-10 font-semibold text-brown-dark" data-aos="fade-up" data-aos-delay="300">¡Gracias por tu interés en nuestros productos para el despertar de la conciencia!</p>
+        </div>
+    </section>
+
+    <footer class="bg-yellow-energetic text-brand-900 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <img src="https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_13_11%20p.m..png?raw=true" alt="Logo FUMAYA Pequeño" class="h-24 w-auto mx-auto mb-6 rounded-full shadow-lg border-2 border-white transform hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/96x96/FBBF24/FFFFFF?text=F'; this.onerror=null;">
+            <p class="font-display text-4xl font-bold mb-4">Escuela Autoctona Fumaya</p>
+            <p class="mb-5 text-base text-brand-800 opacity-90">Conectando con la energía y el conocimiento ancestral para tu despertar.</p>
+            <div class="my-8 border-t border-brand-700 opacity-40 w-1/4 mx-auto"></div>
+            <p class="text-base text-brand-800 mb-4">Para consultas y seguimiento de pedidos, escríbenos a:</p>
+            <a href="mailto:cmavct@gmail.com" class="text-xl font-semibold text-orange-700 hover:text-orange-900 transition-colors duration-300 inline-flex items-center justify-center p-4 bg-white/20 hover:bg-white/40 rounded-xl shadow-md">
+                <i class="fas fa-envelope mr-3 text-2xl"></i>cmavct@gmail.com
+            </a>
+            <p class="text-base text-brand-800 mt-6 mb-4">O contáctanos por WhatsApp:</p>
+            <a href="https://wa.me/525512345678" target="_blank" class="text-xl font-semibold text-green-700 hover:text-green-900 transition-colors duration-300 inline-flex items-center justify-center p-4 bg-white/20 hover:bg-white/40 rounded-xl shadow-md">
+                <i class="fab fa-whatsapp mr-3 text-2xl"></i> +52 55 1234 5678 </a>
+            <div class="flex justify-center space-x-6 mt-8">
+                <a href="#" class="text-brand-900 hover:text-brand-800 transition-colors duration-300 text-3xl" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" class="text-brand-900 hover:text-brand-800 transition-colors duration-300 text-3xl" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+            </div>
+            <p class="text-sm mt-10 text-brand-800 opacity-70">&copy; <span id="current-year"></span> Escuela Autoctona Fumaya. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</div>
+
+<div id="cart-modal" class="modal">
+    <div class="modal-content max-h-[85vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-brand-800">Tu Carrito de Compras</h2>
+            <span class="close-button" id="close-cart-modal" aria-label="Cerrar Modal">&times;</span>
+        </div>
+        <div id="cart-items-container" class="mb-8 max-h-80 overflow-y-auto pr-3">
+            </div>
+        <div class="border-t-2 border-brand-300 pt-6 mb-8">
+            <div class="flex justify-end items-center">
+                <strong class="text-2xl text-brown-dark">Total: $<span id="cart-total">0.00</span> MXN</strong>
+            </div>
+        </div>
+
+        <h3 class="font-display text-2xl font-semibold mb-5 text-brand-800">Información del Cliente</h3>
+        <form id="checkout-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-brown-dark mb-2">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required class="w-full">
+                </div>
+                <div>
+                    <label for="apellidos" class="block text-sm font-medium text-brown-dark mb-2">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" required class="w-full">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-brown-dark mb-2">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required class="w-full">
+                </div>
+                <div>
+                    <label for="whatsapp" class="block text-sm font-medium text-brown-dark mb-2">WhatsApp (Opcional):</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" class="w-full">
+                </div>
+                 <div class="md:col-span-2">
+                    <label for="ciudad" class="block text-sm font-medium text-brown-dark mb-2">Ciudad:</label>
+                    <input type="text" id="ciudad" name="ciudad" required class="w-full">
+                </div>
+            </div>
+            <div id="reason-for-fungis-container" class="mb-6 hidden">
+                <label for="motivoFungis" class="block text-sm font-medium text-brown-dark mb-2">Motivo por el que necesitas las Fungis:</label>
+                <textarea id="motivoFungis" name="motivoFungis" rows="4" class="w-full"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full text-xl mt-4">
+                <i class="fas fa-paper-plane mr-2"></i> Realizar Pedido
+            </button>
+            <div class="mt-6 text-center">
+                <button type="button" class="paypal-button-placeholder">
+                    <i class="fab fa-paypal mr-2"></i>Pagar con PayPal (Próximamente)
+                </button>
+                <p class="text-xs text-gray-500 mt-2">Nos contactaremos para coordinar el pago vía PayPal.</p>
+            </div>
+        </form>
+        <div id="order-confirmation-message" class="mt-8 p-6 bg-green-50 border-l-4 border-green-500 text-green-800 rounded-lg shadow-md hidden">
+            </div>
+    </div>
+</div>
+
+<div id="product-detail-modal" class="modal">
+    <div class="modal-content max-h-[85vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h2 id="product-detail-name" class="font-display text-3xl md:text-4xl font-bold text-brand-800"></h2>
+            <span class="close-button" id="close-product-detail-modal" aria-label="Cerrar Detalles del Producto">&times;</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow-md">
+                <img id="product-detail-image" src="" alt="Imagen del Producto" class="w-full h-auto max-h-96 object-contain rounded-lg" onerror="this.src='https://placehold.co/400x300/FFCF56/4A3B31?text=Imagen';this.onerror=null;">
+            </div>
+            <div>
+                <p id="product-detail-price" class="text-3xl font-bold text-orange-700 mb-4"></p>
+                <p id="product-detail-full-description" class="text-lg text-cacao-700 leading-relaxed mb-6"></p>
+                <button id="product-detail-add-to-cart-btn" class="btn-primary w-full text-xl mt-4">
+                    <i class="fas fa-cart-plus mr-2"></i> Añadir al Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="notification"></div>
+<div id="error-notification"></div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script type="module">
+/* ——————————————————— Configuración y Lógica de Firebase & Datos ——————————————————— */
+// Importaciones de módulos de Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, serverTimestamp, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+// Configuración de Firebase (manteniendo la configuración existente del usuario)
+const firebaseConfig = {
+    apiKey: "AIzaSyABmJ9xjhiajyIAQPRsKJledCiMCDyBKag",
+    authDomain: "fungicabs.firebaseapp.com",
+    projectId: "fungicabs",
+    storageBucket: "fungicabs.firebasestorage.app",
+    messagingSenderId: "634777251591",
+    appId: "1:634777251591:web:9d6f6bb59f8f546e7ddfa2",
+    measurementId: "G-JHBCL3KTN2"
+};
+
+// Inicialización de los servicios de Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+setLogLevel('debug'); // Habilitar logs de depuración para Firebase en la consola
+
+// Obtener el ID de la aplicación, si está disponible en el entorno del Canvas
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'fungicabs';
+let currentUserId = null; // Variable para almacenar el ID del usuario autenticado
+
+// Listener para cambios en el estado de autenticación de Firebase
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("Firebase Auth: Usuario autenticado:", user.uid);
+        currentUserId = user.uid; // Asigna el UID del usuario autenticado
+    } else {
+        console.log("Firebase Auth: Usuario no autenticado.");
+        currentUserId = null; // Reinicia el UID si no hay usuario
+        // Si no hay usuario autenticado y no se proporcionó un token personalizado, intenta el inicio de sesión anónimo
+        if (!(typeof __initial_auth_token !== 'undefined' && __initial_auth_token)) {
+            console.log("Firebase Auth: Intentando inicio de sesión anónimo (no hay usuario y no hay token personalizado).");
+            signInAnonymously(auth).catch(error => {
+                console.error("Firebase Auth: Error al iniciar sesión anónimamente después del cambio de estado:", error);
+                showNotification("Error de autenticación. Recargue la página.", true);
+            });
+        }
+    }
+});
+
+// Función de inicio de sesión inicial al cargar la página
+(async () => {
+    try {
+        // Si se proporciona un token de autenticación personalizado desde el entorno, úsalo
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            console.log("Firebase Auth: Intentando inicio de sesión con token personalizado...");
+            await signInWithCustomToken(auth, __initial_auth_token);
+            console.log("Firebase Auth: Inicio de sesión con token personalizado exitoso.");
+        } else if (!auth.currentUser) { // Si no hay token personalizado y no hay usuario actual, inicia sesión anónimamente
+            console.log("Firebase Auth: No hay token personalizado, no hay usuario actual. Intentando inicio de sesión anónimo...");
+            await signInAnonymously(auth);
+            console.log("Firebase Auth: Inicio de sesión anónimo exitoso.");
+        } else { // Si ya hay un usuario autenticado (por ejemplo, de una sesión anterior), simplemente actualiza el UID
+            console.log("Firebase Auth: Usuario ya autenticado o token personalizado no proporcionado. UID:", auth.currentUser.uid);
+            currentUserId = auth.currentUser.uid;
+        }
+    } catch (error) {
+        // Manejo de errores de autenticación
+        if (error.code === 'auth/custom-token-mismatch' || error.code === 'auth/invalid-custom-token') {
+            console.warn("Firebase Auth: El token personalizado falló (" + error.code + "), recurriendo a inicio de sesión anónimo.");
+            if (!auth.currentUser) { // Asegurarse de que no estamos ya autenticados antes de intentar de nuevo
+               try {
+                   await signInAnonymously(auth);
+                   console.log("Firebase Auth: Inicio de sesión anónimo de respaldo exitoso.");
+               } catch (anonError) {
+                   console.error("Firebase Auth: El inicio de sesión anónimo de respaldo también falló:", anonError);
+                   showNotification("Error crítico de autenticación.", true);
+               }
+            } else {
+                currentUserId = auth.currentUser.uid;
+                console.log("Firebase Auth: El usuario ya estaba autenticado (probablemente anónimamente) después de que fallara el token personalizado. UID:", currentUserId);
+            }
+        } else {
+             console.error("Firebase Auth: Error durante el inicio de sesión inicial:", error);
+             showNotification("Error de autenticación: " + error.message, true);
+        }
+    }
+})();
+
+// Datos de las imágenes del carrusel de la sección "Sobre Nosotros"
+const aboutUsImagesData = [
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/Sesi%C3%B3n%20espiritual%20al%20atardecer%20en%20el%20bosque.png?raw=true', caption: 'El Tarot: Un mapa sagrado del viaje del alma, revelando arquetipos y senderos de transformación al conectar con la energía del atardecer.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/Sanaci%C3%B3n%20en%20el%20bosque%20m%C3%ADstico%20(1).png?raw=true', caption: 'Esfuerzos Conscientes: La práctica diaria de la atención plena y la intención enfocada, pilares para la sanación y el despertar en el corazón del bosque místico.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/Ritual%20en%20el%20bosque%20encantado%20(2).png?raw=true', caption: 'Chi Kung en la Naturaleza: Cultivando y armonizando la energía vital (Qi) a través de movimientos ancestrales, un ritual de poder y conexión.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/Hombre%20meditando%20en%20la%20esfera%20dorada.png?raw=true', caption: 'Meditación Profunda: La esfera dorada como símbolo de la conciencia unificada, alcanzada a través del silencio interior y la expansión perceptual.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/Joven%20en%20el%20bosque%20m%C3%A1gico.png?raw=true', caption: 'El Despertar Neotolteca: Un joven guerrero descubre los secretos de la Madre Tierra, integrando la sabiduría ancestral para forjar un nuevo camino.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/Cultivo%20de%20energ%C3%ADa%20en%20el%20bosque.png?raw=true', caption: 'Alquimia Interior: El cultivo consciente de la energía interna, transformando las fuerzas vitales en un elixir de poder y claridad espiritual en el bosque.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2004_37_46%20p.m..png?raw=true', caption: 'Visión Chamánica: El Tarot como herramienta para acceder a la visión profunda, un puente entre el mundo tangible y los reinos sutiles del espíritu.' },
+    { src: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2004_41_03%20p.m..png?raw=true', caption: 'Conexión Cósmica: Los esfuerzos conscientes y el Chi Kung nos alinean con las energías universales, reflejando la interconexión de todo ser.' }
+];
+
+// Datos de los productos Fungicabs disponibles con descripciones completas
+const fungicabsData = [
+    {
+        id: 'fungi1',
+        name: 'FUNGICAB (Principal)',
+        price: 400,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_21_18%20p.m..png?raw=true',
+        description: 'Nuestra fórmula principal, diseñada para equilibrar tu energía vital y promover una sensación general de bienestar. Un aliado natural para tu día a día (30 pastillas).',
+        fullDescription: 'FUNGICAB (Principal) es la base de nuestra línea de productos, cuidadosamente formulado para armonizar el flujo de energía vital en tu cuerpo. Ayuda a restaurar el equilibrio natural, promoviendo una sensación de calma, claridad y vitalidad. Ideal para el uso diario, estas 30 pastillas son un soporte fundamental para el bienestar integral y la conexión con tu centro. Contiene una mezcla sinérgica de extractos botánicos y esencias energéticas que trabajan a nivel sutil para potenciar tus capacidades innatas de autosanación y adaptación al entorno.',
+        type: 'fungicab'
+    },
+    {
+        id: 'fungi2',
+        name: 'FUNGICAB CHOKO-POWER PARA SANAR EL ALMA',
+        price: 400,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_26_51%20p.m..png?raw=true',
+        description: 'Una combinación especial con el poder del choko, enfocada en la sanación emocional y la reconexión con tu esencia interior (30 pastillas).',
+        fullDescription: 'FUNGICAB CHOKO-POWER es un elixir potente diseñado para la sanación profunda del alma. Infundido con la energía del choko (cacao ceremonial), este fungicab abre el corazón, disuelve bloqueos emocionales y fomenta la reconexión con tu sabiduría interior. Cada una de las 30 pastillas es una invitación a la introspección y al procesamiento de viejas heridas, permitiendo que la luz de tu esencia brille con más fuerza. Es un compañero ideal para prácticas de meditación, trabajo con sueños o simplemente para nutrir tu bienestar emocional en momentos de necesidad.',
+        type: 'fungicab'
+    },
+    {
+        id: 'fungi3',
+        name: 'FUNGICAB HYLEOMNIUN',
+        price: 400,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_29_32%20p.m..png?raw=true',
+        description: 'Formulado para potenciar la claridad mental y la conexión con planos superiores de conciencia. Ideal para la meditación y la introspección (30 pastillas).',
+        fullDescription: 'FUNGICAB HYLEOMNIUN es tu llave para la expansión de la conciencia y la lucidez mental. Esta fórmula única está diseñada para despejar la mente, mejorar la concentración y facilitar la conexión con planos superiores de percepción. Las 30 pastillas son un apoyo invaluable para la meditación profunda, el estudio de conocimientos esotéricos y cualquier práctica que requiera una mente aguda y receptiva. Ayuda a disolver la niebla mental y a percibir la realidad desde una perspectiva más elevada, fomentando la introspección y el autoconocimiento.',
+        type: 'fungicab'
+    },
+    {
+        id: 'fungi4',
+        name: 'FUNGICAB FIRE-ROOT',
+        price: 400,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_35_26%20p.m..png?raw=true',
+        description: 'Enciende tu fuego interior con Fire-Root, una mezcla vigorizante para aumentar la energía física y la determinación (30 pastillas).',
+        fullDescription: 'FUNGICAB FIRE-ROOT es el catalizador que necesitas para encender tu fuego interior y potenciar tu energía vital. Esta mezcla vigorizante está formulada para aumentar la resistencia física, la determinación y la pasión por la vida. Las 30 pastillas son ideales para aquellos que buscan un impulso de energía natural, para superar la inercia o para afrontar desafíos con renovado vigor. Activa tu centro de poder y te impulsa a la acción, manteniendo un equilibrio energético que evita el agotamiento, fomentando la creatividad y la fuerza de voluntad.',
+        type: 'fungicab'
+    },
+    {
+        id: 'fungi5',
+        name: 'NEURO-LUCIDUM',
+        price: 400,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_44_04%20p.m..png?raw=true',
+        description: 'Diseñado para optimizar la función neurológica, mejorar la concentración y fomentar la lucidez mental (30 pastillas).',
+        fullDescription: 'NEURO-LUCIDUM es una fórmula avanzada para la optimización de la función neurológica. Diseñado para mejorar la memoria, la concentración y la agilidad mental, estas 30 pastillas son un soporte esencial para estudiantes, profesionales y cualquier persona que busque potenciar su rendimiento cognitivo. Fomenta la lucidez mental y la claridad de pensamiento, permitiéndote procesar información de manera más eficiente y mantener un enfoque sostenido en tus tareas diarias. Es un aliado para la salud cerebral a largo plazo y para el mantenimiento de una mente activa y vibrante.',
+        type: 'fungicab'
+    },
+    {
+        id: 'fungi6',
+        name: 'BLUE-VOIVE',
+        price: 400,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_39_26%20p.m..png?raw=true',
+        description: 'Una fórmula para la expresión y la comunicación clara, ayudando a conectar con tu voz interior y la sabiduría ancestral (30 pastillas).',
+        fullDescription: 'BLUE-VOIVE es una fórmula única que facilita la expresión auténtica y la comunicación clara. Ayuda a desbloquear el centro de la garganta, permitiéndote conectar con tu voz interior y expresar tu verdad con confianza y sabiduría. Estas 30 pastillas son un apoyo para aquellos que buscan mejorar sus habilidades de comunicación, tanto a nivel personal como profesional, y para quienes desean alinearse más con la sabiduría ancestral a través de la expresión sonora. Fomenta la creatividad verbal y la capacidad de manifestar tus ideas con fluidez.',
+        type: 'fungicab'
+    }
+];
+// Datos de los productos Libros disponibles con descripciones completas
+const booksData = [
+    {
+        id: 'book1',
+        name: 'BRUXERIA NAHUALI',
+        price: 250,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_51_33%20p.m..png?raw=true',
+        description: 'Explora los senderos místicos de la bruxería y el nahualismo, una guía profunda hacia el conocimiento oculto.',
+        fullDescription: 'Adéntrate en los misterios de la Bruxería Nahuali, un compendio ancestral que desvela los secretos de la magia indígena y la transformación personal. Este libro te guiará a través de rituales, prácticas energéticas y la comprensión de los nahuales, seres de poder que habitan entre dimensiones. Es una obra esencial para aquellos que buscan reconectar con la sabiduría de la tierra y despertar su propio poder interior, ofreciendo una perspectiva profunda sobre la interconexión entre el ser humano y el cosmos. Descubre cómo la bruxería nahuali puede ser un camino de autodescubrimiento y empoderamiento.',
+        type: 'book'
+    },
+    {
+        id: 'book2',
+        name: 'CONVERSACIONES CON EL ABUELO FUEGO',
+        price: 250,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_53_48%20p.m..png?raw=true',
+        description: 'Diálogos reveladores que te conectarán con la sabiduría ancestral del fuego y la transformación interior.',
+        fullDescription: 'CONVERSACIONES CON EL ABUELO FUEGO te invita a un diálogo íntimo con una de las fuerzas más sagradas y transformadoras de la naturaleza. A través de relatos y enseñanzas, este libro explora la sabiduría del fuego como purificador, guía y catalizador de cambios. Descubre cómo invocar su energía para la sanación, la inspiración y la manifestación de tus deseos más profundos. Es una obra que te conectará con la tradición oral de los pueblos originarios y te enseñará a utilizar el poder del fuego para tu evolución espiritual y personal.',
+        type: 'book'
+    },
+    {
+        id: 'book3',
+        name: 'DON MATÍAS Y EL ARTE DEL VACÍO',
+        price: 250,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_55_24%20p.m..png?raw=true',
+        description: 'Descubre las enseñanzas de Don Matías sobre la vacuidad y el arte de la presencia consciente.',
+        fullDescription: 'Sumérgete en las profundas enseñanzas de Don Matías, un maestro de la sabiduría ancestral, en EL ARTE DEL VACÍO. Este libro explora el concepto de la vacuidad no como ausencia, sino como el espacio ilimitado de potencial y creación. Aprende a cultivar la presencia consciente, a liberarte de las ataduras mentales y a encontrar la plenitud en el aquí y ahora. Una guía filosófica y práctica para aquellos que buscan la iluminación a través del desapego y la conexión con la esencia pura del ser.',
+        type: 'book'
+    },
+    {
+        id: 'book4',
+        name: 'INDITOS EN FUGA',
+        price: 250,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2005_59_26%20p.m..png?raw=true',
+        description: 'Una narrativa que te sumerge en la cosmovisión indígena y la búsqueda de la libertad espiritual.',
+        fullDescription: 'INDITOS EN FUGA es una narrativa cautivadora que te transporta a la cosmovisión indígena, explorando la búsqueda de la libertad espiritual y la resistencia cultural. A través de las vivencias de sus personajes, este libro te sumerge en un mundo de tradiciones, desafíos y la profunda conexión con la Madre Tierra. Es un relato que inspira a la reflexión sobre la identidad, la autonomía y la importancia de preservar las raíces ancestrales en un mundo en constante cambio. Una lectura conmovedora que te abrirá los ojos a nuevas perspectivas.',
+        type: 'book'
+    },
+    {
+        id: 'book5',
+        name: 'RELATOS DE PODER: Manual Práctico',
+        price: 250,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2006_02_06%20p.m..png?raw=true',
+        description: 'Una guía esencial para cultivar tu energía interna y desarrollar esfuerzos conscientes en tu camino de poder.',
+        fullDescription: 'RELATOS DE PODER: Manual Práctico es una guía indispensable para el desarrollo de tu energía interna y la manifestación de tu potencial. Este manual te ofrece ejercicios prácticos, meditaciones y técnicas para cultivar la conciencia, fortalecer tu voluntad y dirigir tus esfuerzos hacia la creación de la realidad que deseas. Inspirado en las enseñanzas chamánicas y toltecas, es un compañero para quienes buscan un camino de empoderamiento personal y la maestría de sus propias energías. Transforma tu vida con cada práctica y relato.',
+        type: 'book'
+    },
+    {
+        id: 'book6',
+        name: 'LOS BRUJOS DE MEZCALITO',
+        price: 250,
+        image: 'https://github.com/YanYuary/FUNGICABS/blob/main/ChatGPT%20Image%2031%20may%202025,%2006_03_59%20p.m..png?raw=true',
+        description: 'Adéntrate en el mundo de los brujos de Mezcalito y sus enseñanzas sobre la percepción y la energía.',
+        fullDescription: 'LOS BRUJOS DE MEZCALITO te invita a un viaje fascinante al corazón de la magia y la percepción. Descubre las enseñanzas de los enigmáticos brujos de Mezcalito, quienes revelan los secretos de la energía, la realidad y el arte de "ver" más allá de lo aparente. Este libro es una exploración profunda de la conciencia, la manipulación de la energía y la expansión de los límites de la percepción humana. Una lectura que desafiará tus concepciones y te abrirá a nuevas formas de entender el universo y tu lugar en él.',
+        type: 'book'
+    },
+    {
+        id: 'book7',
+        name: 'SHAMAN LADINO VOL. 10: PRÁCTICAS NEOTOLTECAS TAOÍSTAS',
+        price: 250,
+        image: 'https://raw.githubusercontent.com/YanYuary/FUNGICABS/3ef81a0657b43b4546cb3823af59b775f6f68dc6/ChatGPT%20Image%2031%20may%202025%2C%2006_05_38%20p.m..png',
+        description: 'El décimo volumen de la saga Shaman Ladino, explorando la fusión de prácticas neotoltecas y taoístas.',
+        fullDescription: 'SHAMAN LADINO VOL. 10 es el décimo volumen de una serie épica que explora la convergencia de las prácticas neotoltecas y taoístas. Este libro profundiza en técnicas avanzadas de meditación, alquimia interna y el manejo de la energía para el despertar espiritual. Es una guía para aquellos que han recorrido un camino en la conciencia y buscan integrar la sabiduría de dos grandes tradiciones místicas. Descubre cómo estas prácticas ancestrales pueden potenciar tu evolución y llevarte a nuevos niveles de comprensión y maestría personal.',
+        type: 'book'
+    }
+];
+
+// Combinar todos los productos en un solo array para facilitar la búsqueda
+const allProducts = [...fungicabsData, ...booksData];
+let cart = []; // Array para almacenar los elementos del carrito de compras
+
+/* ——————————————————— Funciones de Utilidad y Lógica del Carrito ——————————————————— */
+
+/**
+ * Muestra una notificación temporal en la esquina superior derecha de la pantalla.
+ * @param {string} message - El mensaje a mostrar.
+ * @param {boolean} isError - Si es true, muestra una notificación de error (roja), de lo contrario, de éxito (verde).
+ */
+function showNotification(message, isError = false) {
+    const notificationElement = isError ? document.getElementById('error-notification') : document.getElementById('notification');
+    notificationElement.textContent = message;
+    notificationElement.style.display = 'block';
+    setTimeout(() => { notificationElement.style.display = 'none'; }, 3500); // Ocultar después de 3.5 segundos
+}
+
+/**
+ * Añade un producto al carrito o incrementa su cantidad si ya existe.
+ * @param {string} productId - El ID del producto a añadir.
+ */
+function addToCart(productId) {
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) {
+        console.error(`Producto con ID ${productId} no encontrado.`);
+        return;
+    }
+    const cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        cartItem.quantity++; // Si ya está en el carrito, incrementa la cantidad
+    } else {
+        cart.push({ ...product, quantity: 1 }); // Si no, añade el producto con cantidad 1
+    }
+    updateCartDisplay(); // Actualiza la interfaz del carrito
+    showNotification(`${product.name} añadido al carrito.`);
+}
+
+/**
+ * Actualiza la visualización del carrito de compras en el modal.
+ * Renderiza los elementos, calcula el total y actualiza el contador.
+ * También muestra/oculta el campo "Motivo por Fungis" si hay fungicabs en el carrito.
+ */
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalElement = document.getElementById('cart-total');
+    const cartCountElement = document.getElementById('cart-count');
+    const reasonForFungisContainer = document.getElementById('reason-for-fungis-container');
+    cartItemsContainer.innerHTML = ''; // Limpiar el contenedor de elementos del carrito
+    let total = 0;
+    let itemCount = 0;
+    let hasFungicabs = false;
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-brown-medium italic py-4 text-center">Tu carrito está vacío. Explora nuestros productos.</p>';
+    } else {
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/80x80/FBBF24/FFFFFF?text=Img'; this.onerror=null;">
+                <div class="cart-item-details">
+                    <span class="cart-item-name text-brown-dark">${item.name}</span>
+                    <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+                </div>
+                <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="quantity-input bg-white">
+                <span class="cart-item-subtotal text-brown-dark">$${(item.price * item.quantity).toFixed(2)}</span>
+                <button data-id="${item.id}" class="remove-item-btn" aria-label="Eliminar ${item.name}"><i class="fas fa-trash-alt"></i></button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+            total += item.price * item.quantity;
+            itemCount += item.quantity;
+            if (item.type === 'fungicab') hasFungicabs = true; // Verificar si hay fungicabs en el carrito
+        });
+    }
+    cartTotalElement.textContent = total.toFixed(2); // Actualizar el total
+    cartCountElement.textContent = itemCount; // Actualizar el contador de elementos
+    reasonForFungisContainer.style.display = hasFungicabs ? 'block' : 'none'; // Mostrar/ocultar el campo de motivo
+
+    // Añadir event listeners a los inputs de cantidad para actualizar el carrito en tiempo real
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('input', (e) => {
+            const newQuantity = parseInt(e.target.value);
+            if (isNaN(newQuantity) || newQuantity < 1) {
+                // Si la entrada no es un número válido o es menor que 1, restablecer al valor anterior
+                e.target.value = cart.find(item => item.id === e.target.dataset.id)?.quantity || 1;
+                return;
+            }
+            updateQuantity(e.target.dataset.id, newQuantity);
+        });
+    });
+    // Añadir event listeners a los botones de eliminar
+    document.querySelectorAll('.remove-item-btn').forEach(button => {
+        button.addEventListener('click', (e) => removeFromCart(e.currentTarget.dataset.id));
+    });
+}
+
+/**
+ * Actualiza la cantidad de un producto específico en el carrito.
+ * @param {string} productId - El ID del producto cuya cantidad se va a actualizar.
+ * @param {number} quantity - La nueva cantidad del producto.
+ */
+function updateQuantity(productId, quantity) {
+    const cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        cartItem.quantity = (isNaN(quantity) || quantity < 1) ? 1 : quantity; // Asegura que la cantidad sea al menos 1
+    }
+    updateCartDisplay();
+}
+
+/**
+ * Elimina un producto del carrito.
+ * @param {string} productId - El ID del producto a eliminar.
+ */
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId); // Filtra el producto a eliminar
+    updateCartDisplay();
+    showNotification("Producto eliminado del carrito.");
+}
+
+/**
+ * Renderiza los productos en las secciones "Fungicabs" y "Libros".
+ */
+function renderProducts() {
+    const fungicabsContainer = document.getElementById('fungicabs-products');
+    const booksContainer = document.getElementById('books-products');
+    fungicabsContainer.innerHTML = ''; // Limpiar contenedores antes de renderizar
+    booksContainer.innerHTML = '';
+    // Renderizar Fungicabs
+    fungicabsData.forEach(product => fungicabsContainer.appendChild(createProductElement(product)));
+    // Renderizar Libros
+    booksData.forEach(product => booksContainer.appendChild(createProductElement(product)));
+}
+
+/**
+ * Crea un elemento HTML para un producto (tarjeta de producto).
+ * @param {object} product - Objeto con los datos del producto.
+ * @returns {HTMLElement} El elemento div HTML que representa la tarjeta del producto.
+ */
+function createProductElement(product) {
+  const el = document.createElement('div');
+  el.className = 'card product-card'; // Añadir clase 'product-card' para identificarla
+  el.dataset.id = product.id; // Almacenar el ID del producto en el dataset
+  el.innerHTML = `
+    <div>
+      <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-contain mb-4" loading="lazy" onerror="this.src='https://placehold.co/300x230/FFCF56/4A3B31?text=${encodeURIComponent(product.name)}';this.onerror=null;">
+      <h3 class="font-display text-2xl font-bold mb-2 text-brand-800">${product.name}</h3>
+      <p class="text-sm mb-3 text-cacao-700 leading-relaxed">${product.description}</p>
+      <p class="text-xl font-semibold text-orange-700 mb-4">$${product.price.toFixed(2)} MXN</p>
+    </div>
+    <button class="btn-primary add-to-cart-btn w-full mt-6" data-id="${product.id}" aria-label="Añadir ${product.name} al carrito"><i class="fas fa-cart-plus mr-2"></i> Añadir al carrito</button>`;
+    // Se añadió 'mt-6' a los botones de añadir al carrito para más espacio
+  return el;
+}
+
+/* ——————————————————— Lógica del Modal del Carrito ——————————————————— */
+
+// Obtener referencias a los elementos del DOM relacionados con el modal del carrito
+const cartModalEl = document.getElementById('cart-modal');
+const cartButtonEl = document.getElementById('cart-button');
+const closeCartModalButtonEl = document.getElementById('close-cart-modal');
+
+// Abrir modal del carrito al hacer clic en el botón del carrito
+if (cartButtonEl) {
+    cartButtonEl.onclick = () => {
+        updateCartDisplay(); // Asegura que el carrito esté actualizado antes de abrir
+        cartModalEl.style.display = 'block';
+    };
+}
+// Cerrar modal del carrito al hacer clic en el botón de cerrar
+if (closeCartModalButtonEl) {
+    closeCartModalButtonEl.onclick = () => cartModalEl.style.display = 'none';
+}
+// Cerrar modal del carrito al hacer clic fuera del contenido del modal
+window.onclick = (event) => {
+    if (event.target == cartModalEl || event.target == productDetailModalEl) {
+        cartModalEl.style.display = 'none';
+        productDetailModalEl.style.display = 'none';
+    }
+};
+
+/* ——————————————————— Lógica del Formulario de Checkout ——————————————————— */
+
+// Formulario de checkout
+const checkoutFormEl = document.getElementById('checkout-form');
+if (checkoutFormEl) {
+    checkoutFormEl.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevenir el envío por defecto del formulario
+
+        if (cart.length === 0) {
+            showNotification("Tu carrito está vacío. Por favor, añade productos antes de realizar un pedido.", true);
+            return;
+        }
+        // Asegurarse de que el usuario esté autenticado antes de intentar guardar en Firestore
+        if (!currentUserId) {
+            showNotification("Error de autenticación. Por favor, recarga la página e intenta de nuevo.", true);
+            console.error("No hay usuario autenticado (currentUserId es nulo) para la operación de Firestore.");
+            return;
+        }
+
+        // Recopilar datos del cliente y del pedido
+        const customerData = {
+            nombreCliente: document.getElementById('nombre').value,
+            apellidosCliente: document.getElementById('apellidos').value,
+            ciudadCliente: document.getElementById('ciudad').value,
+            emailCliente: document.getElementById('email').value,
+            whatsappCliente: document.getElementById('whatsapp').value || '', // WhatsApp es opcional
+            motivoFungis: cart.some(item => item.type === 'fungicab') ? document.getElementById('motivoFungis').value : '', // Solo si hay fungicabs
+            items: cart.map(item => ({ id: item.id, nombre: item.name, precio: item.price, cantidad: item.quantity })),
+            totalPedido: parseFloat(document.getElementById('cart-total').textContent),
+            fechaPedido: serverTimestamp(), // Marca de tiempo del servidor de Firestore
+            estadoPedido: "Pendiente de Contacto para Pago",
+            clienteId: currentUserId // ID del usuario autenticado para vincular el pedido
+        };
+
+        try {
+            // Ruta de la colección de pedidos en Firestore (datos públicos de la aplicación)
+            const ordersCollectionPath = `/artifacts/${appId}/public/data/pedidos`;
+            await addDoc(collection(db, ordersCollectionPath), customerData); // Guardar el pedido en Firestore
+
+            // Mostrar mensaje de confirmación del pedido
+            const orderConfirmationMessage = document.getElementById('order-confirmation-message');
+            orderConfirmationMessage.innerHTML = `
+                <h4 class="font-bold text-lg mb-2">¡Pedido Registrado Exitosamente!</h4>
+                <p>Hemos guardado los detalles de tu pedido. Nos pondremos en contacto contigo a través de tu correo electrónico (<strong>${customerData.emailCliente}</strong>) ${customerData.whatsappCliente ? `o WhatsApp (<strong>${customerData.whatsappCliente}</strong>)` : ''} para coordinar el pago vía PayPal y los detalles del envío.</p>
+                <p class="mt-3 text-sm">Por favor, revisa tu bandeja de entrada y/o mensajes. Si no recibes contacto en 24 horas, puedes escribirnos a <strong>cmavct@gmail.com</strong>.</p>
+            `;
+            orderConfirmationMessage.classList.remove('hidden'); // Hacer visible el mensaje de confirmación
+            showNotification("Pedido registrado. Te contactaremos pronto.");
+
+            // Limpiar carrito y formulario después del pedido exitoso
+            cart = [];
+            updateCartDisplay(); // Actualiza la visualización del carrito (ahora vacío)
+            checkoutFormEl.reset(); // Restablece el formulario de checkout
+        } catch (error) {
+            console.error("Error al guardar el pedido en Firestore: ", error);
+            showNotification("Error al procesar tu pedido. Inténtalo de nuevo.", true);
+        }
+    });
+}
+
+/* ——————————————————— Lógica del Carrusel "Sobre Nosotros" ——————————————————— */
+
+// Obtener referencias a los elementos del DOM del carrusel
+const carouselTrackEl = document.querySelector('.carousel-track');
+const prevButtonEl = document.querySelector('.carousel-button.prev');
+const nextButtonEl = document.querySelector('.carousel-button.next');
+let carouselCurrentIdx = 0; // Índice de la imagen actual en el carrusel
+
+/**
+ * Renderiza las imágenes y sus leyendas en el carrusel.
+ */
+function renderCarousel() {
+  if (!carouselTrackEl) return;
+  carouselTrackEl.innerHTML = ''; // Limpiar el carrusel antes de renderizar
+  aboutUsImagesData.forEach(imgData => {
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide'; // Clase 'carousel-slide' para cada diapositiva
+    slide.innerHTML = `<img src="${imgData.src}" alt="${imgData.caption.substring(0, 50)}" loading="lazy" onerror="this.src='https://placehold.co/800x450/FFCF56/4A3B31?text=Imagen';this.onerror=null;"><div class="carousel-caption">${imgData.caption}</div>`;
+    carouselTrackEl.appendChild(slide);
+  });
+}
+
+/**
+ * Actualiza la posición de las diapositivas del carrusel para mostrar la imagen actual.
+ */
+function updateCarousel() {
+    if (!carouselTrackEl || !carouselTrackEl.querySelector('.carousel-slide')) return;
+    const slideWidth = carouselTrackEl.querySelector('.carousel-slide').clientWidth;
+    if (slideWidth > 0) {
+         carouselTrackEl.style.transform = `translateX(-${carouselCurrentIdx * slideWidth}px)`;
+    }
+}
+
+// Event listeners para los botones de navegación del carrusel
+if (prevButtonEl && nextButtonEl) {
+    prevButtonEl.addEventListener('click', () => {
+        carouselCurrentIdx = (carouselCurrentIdx === 0) ? aboutUsImagesData.length - 1 : carouselCurrentIdx - 1;
+        updateCarousel();
+    });
+
+    nextButtonEl.addEventListener('click', () => {
+        carouselCurrentIdx = (carouselCurrentIdx === aboutUsImagesData.length - 1) ? 0 : carouselCurrentIdx + 1;
+        updateCarousel();
+    });
+}
+
+// Actualizar la posición del carrusel al redimensionar la ventana para mantener la responsividad
+window.addEventListener('resize', () => {
+    updateCarousel();
+});
+
+/* ——————————————————— Lógica del Modal de Detalles del Producto ——————————————————— */
+
+// Obtener referencias a los elementos del DOM del modal de detalles del producto
+const productDetailModalEl = document.getElementById('product-detail-modal');
+const closeProductDetailModalButtonEl = document.getElementById('close-product-detail-modal');
+const productDetailNameEl = document.getElementById('product-detail-name');
+const productDetailImageEl = document.getElementById('product-detail-image');
+const productDetailPriceEl = document.getElementById('product-detail-price');
+const productDetailFullDescriptionEl = document.getElementById('product-detail-full-description');
+const productDetailAddToCartBtnEl = document.getElementById('product-detail-add-to-cart-btn');
+
+// Cerrar modal de detalles del producto al hacer clic en el botón de cerrar
+if (closeProductDetailModalButtonEl) {
+    closeProductDetailModalButtonEl.onclick = () => productDetailModalEl.style.display = 'none';
+}
+
+/**
+ * Muestra el modal de detalles del producto con la información del producto dado.
+ * @param {object} product - El objeto producto con su información completa.
+ */
+function showProductDetail(product) {
+    productDetailNameEl.textContent = product.name;
+    productDetailImageEl.src = product.image;
+    productDetailImageEl.alt = product.name;
+    productDetailPriceEl.textContent = `$${product.price.toFixed(2)} MXN`;
+    productDetailFullDescriptionEl.textContent = product.fullDescription;
+    productDetailAddToCartBtnEl.dataset.id = product.id; // Asignar el ID al botón de añadir al carrito en el modal
+    productDetailModalEl.style.display = 'block';
+}
+
+// Event listener para el botón "Añadir al Carrito" dentro del modal de detalles del producto
+if (productDetailAddToCartBtnEl) {
+    productDetailAddToCartBtnEl.addEventListener('click', (e) => {
+        const productId = e.currentTarget.dataset.id;
+        addToCart(productId);
+        productDetailModalEl.style.display = 'none'; // Cerrar el modal después de añadir al carrito
+    });
+}
+
+/* ——————————————————— Inicialización de la Aplicación ——————————————————— */
+
+// Evento DOMContentLoaded: se dispara cuando el HTML ha sido completamente cargado y parseado
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts(); // Renderizar productos al cargar la página
+    renderCarousel(); // Renderizar el carrusel de la sección "Sobre Nosotros"
+    updateCarousel(); // Asegurar que el carrusel se muestre en la posición correcta al inicio
+    updateCartDisplay(); // Actualizar el display del carrito (por si hay algo guardado en la sesión)
+
+    // Inicializar AOS (Animate On Scroll) para las animaciones de elementos al hacer scroll
+    AOS.init({
+        duration: 800, // Duración de la animación en milisegundos
+        once: true,    // Si las animaciones deben ocurrir solo una vez al hacer scroll
+        offset: 100,   // Desplazamiento (en píxeles) desde la parte inferior de la ventana para activar la animación
+    });
+
+    // Actualizar el año actual en el pie de página
+    const currentYearEl = document.getElementById('current-year');
+    if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+
+    // Delegación de eventos para los botones "Añadir al Carrito" y las tarjetas de producto
+    document.body.addEventListener('click', function(event) {
+        // Si el clic es en el botón "Añadir al Carrito" dentro de una tarjeta de producto
+        if (event.target.classList.contains('add-to-cart-btn')) {
+            addToCart(event.target.dataset.id);
+        }
+        // Si el clic es en la tarjeta de producto (pero no en el botón de añadir al carrito)
+        if (event.target.closest('.product-card') && !event.target.classList.contains('add-to-cart-btn')) {
+            const cardElement = event.target.closest('.product-card');
+            const productId = cardElement.dataset.id;
+            const product = allProducts.find(p => p.id === productId);
+            if (product) {
+                showProductDetail(product); // Mostrar el modal de detalles del producto
+            }
+        }
+    });
+
+    // Desplazamiento suave para los enlaces de navegación internos (anclas)
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevenir el comportamiento por defecto del enlace (salto instantáneo)
+            const targetId = this.getAttribute('href'); // Obtener el ID del destino (ej. "#fungicabs")
+            const targetElement = document.querySelector(targetId); // Obtener el elemento destino en el DOM
+            if (targetElement) {
+                const navElement = document.querySelector('nav');
+                const navHeight = navElement ? navElement.offsetHeight : 0; // Altura de la barra de navegación para ajustar el scroll
+                // Calcular la posición de desplazamiento ajustando por la altura de la barra de navegación y un pequeño offset
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth' // Desplazamiento suave
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
+
+
+<!-- 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⠿⠛⠉⠉⠙⠛⠻⢿⣷⣄⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣆⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⣀⣤⣤⣤⣤⣤⣄⠀⠀⠀⠀⠙⣿⣧⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⣾⠋⠁⢸⣿⡇⠉⠙⣷⠀⠀⠀⠀⣿⣿⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢿⣿⡀⠀⠙⣷⣤⣾⣿⣷⣤⡾⠋⠀⠀⠀⢀⣿⡿⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠙⢿⣦⡀⠀⠉⠉⠉⠉⠁⠀⠀⠀⢀⣴⣿⠋⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣷⣦⣤⣤⣴⣶⠿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀❤ ✝ Yan Yauri   J, Crux ✝ ❤
+-->
+
